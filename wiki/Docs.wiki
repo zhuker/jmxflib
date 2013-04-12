@@ -1,0 +1,21 @@
+#summary Docs
+
+= Introduction =
+
+Jmxflib works for a limited set of mxf files right now since mxf spec is gigantic and ambiguous 
+
+= Example =
+
+start with the following code:
+{{{
+SeekableInputStream in = new SeekableFileInputStream(new File("hello_world.mxf"));
+MxfStructure structure = MxfStructure.readStructure(in);
+}}}
+
+MxfStructure is pretty much mxf headers converted to java objects, to get meaningful high level data you should query the appropriate headers e.g. to get stored dimension of video file
+
+{{{
+GenericPictureEssenceDescriptor pic = structure.getPictureEssenceDescriptor();
+stored = pic.getStoredDimension();
+display = pic.getDisplayRectangle();
+}}}
