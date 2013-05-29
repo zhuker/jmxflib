@@ -40,4 +40,5 @@ do {
             break;
         }
     }
-} while (in.position() < length);}}}
+} while (in.position() < length);
+}}}
