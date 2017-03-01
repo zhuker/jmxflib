@@ -92,7 +92,7 @@
 		<dependency>
 			<groupId>seekable-io</groupId>
 			<artifactId>seekable-io</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.5</version>
 		</dependency>
 	</dependencies>
 	<properties>
