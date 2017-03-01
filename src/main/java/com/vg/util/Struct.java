@@ -138,7 +138,7 @@ public class Struct {
     /**
      * Holds the outer struct if any.
      */
-    private Struct _outer;
+    Struct _outer;
 
     /**
      * Holds the byte buffer backing the struct (top struct).
@@ -149,12 +149,12 @@ public class Struct {
      * Holds the offset of this struct relative to the outer struct or to the
      * byte buffer if there is no outer.
      */
-    private int _outerOffset;
+    int _outerOffset;
 
     /**
      * Holds this struct alignment in bytes (largest word size of its members).
      */
-    private int _alignment = 1;
+    int _alignment = 1;
 
     /**
      * Holds this struct's length.
