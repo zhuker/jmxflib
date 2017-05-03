@@ -11,9 +11,9 @@
 	</repositories>
 
 	<scm>
-		<url>https://github.com/zhuker/jmxflib</url>
-		<connection>scm:git:https://github.com/zhuker/jmxflib.git</connection>
-		<developerConnection>scm:git:https://github.com/zhuker/jmxflib.git</developerConnection>
+		<url>https://github.com/videogorillas/jmxflib</url>
+		<connection>scm:git:https://github.com/videogorillas/jmxflib.git</connection>
+		<developerConnection>scm:git:https://github.com/videogorillas/jmxflib.git</developerConnection>
 	  <tag>jmxflib-0.0.13</tag>
   </scm>
 
