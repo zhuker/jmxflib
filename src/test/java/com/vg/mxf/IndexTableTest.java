@@ -7,6 +7,7 @@ import java.io.File;
 import java.nio.ByteBuffer;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.vg.io.SeekableFileInputStream;
@@ -47,6 +48,7 @@ public class IndexTableTest {
     }
 
     @Test
+    @Ignore // TODO: need test data!
     public void testIMF() throws Exception {
         File f = new File(
                 "/Users/zhukov/from_colorworks/20131007/ELDORADO/IMF/VOFELD_V3_20130412_OV/vof_el_dorado_v06_00_20120329_c06_grd18_REC709_noTrim_EXR_wCAT_00.mxf");
