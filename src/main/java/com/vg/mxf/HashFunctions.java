@@ -8,7 +8,7 @@
 // suitability of this software for any purpose. It is provided "as is"
 // without expressed or implied warranty.
 
-package com.vg.util;
+package com.vg.mxf;
 
 /**
  * Provides various hash functions.

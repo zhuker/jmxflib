@@ -1,4 +1,4 @@
-package com.vg.util;
+package com.vg.mxf;
 
 import java.io.IOException;
 import java.io.InputStream;

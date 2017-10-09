@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.TreeSet;
 
 import com.vg.io.SeekableInputStream;
-import com.vg.util.FileUtil;
 
 public class MxfValue extends PackedStruct {
     public void parse() {

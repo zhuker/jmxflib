@@ -18,7 +18,6 @@ import org.junit.Test;
 import com.vg.io.SeekableFileInputStream;
 import com.vg.io.SeekableInputStream;
 import com.vg.mxf.Registry.ULDesc;
-import com.vg.util.FileUtil;
 
 public class IndexTable extends MxfValue {
     public static final Key Key = key("06.0E.2B.34.02.53.01.01.0D.01.02.01.01.10.01.00");

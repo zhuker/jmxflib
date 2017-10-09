@@ -1,6 +1,6 @@
 package com.vg.mxf;
 
-import static com.vg.util.FileUtil.tildeExpand;
+import static com.vg.mxf.FileUtil.tildeExpand;
 import static org.junit.Assert.assertEquals;
 
 import java.awt.Dimension;
@@ -16,7 +16,6 @@ import org.junit.Test;
 
 import com.vg.io.SeekableFileInputStream;
 import com.vg.io.SeekableInputStream;
-import com.vg.util.FileUtil;
 
 @Ignore
 public class MxfStructureTest {

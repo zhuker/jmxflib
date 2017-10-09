@@ -22,7 +22,6 @@ import org.w3c.dom.NodeList;
 
 import com.vg.io.SeekableFileInputStream;
 import com.vg.io.SeekableInputStream;
-import com.vg.util.XmlUtil;
 
 public class MxfStructure {
     private HeaderPartitionPack headerPartitionPack;
