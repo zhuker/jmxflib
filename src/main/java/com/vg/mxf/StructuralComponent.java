@@ -4,8 +4,8 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 public class StructuralComponent extends InterchangeObject {
-    TagKey DataDefinition;
-    Tag64 Duration;
+    public TagKey DataDefinition;
+    public Tag64 Duration;
 
     private final static int localTags[] = new int[] { 0x0201, 0x0202 };
 

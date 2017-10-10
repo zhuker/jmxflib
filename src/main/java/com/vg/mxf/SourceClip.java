@@ -6,9 +6,9 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 public class SourceClip extends StructuralComponent {
-    Tag64 StartPosition;
-    TagUMID SourcePackageId;
-    Tag32 SourceTrackId;
+    public Tag64 StartPosition;
+    public TagUMID SourcePackageId;
+    public Tag32 SourceTrackId;
     public static final Key Key = key("06.0E.2B.34.02.53.01.01.0D.01.01.01.01.01.11.00");
 
     private final static int localTags[] = new int[] { 0x1101, 0x1102, 0x1201 };

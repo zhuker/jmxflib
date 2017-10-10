@@ -1,4 +1,4 @@
-package com.vg.util;
+package com.vg.mxf;
 
 import static java.lang.Math.min;
 import static org.junit.Assert.assertEquals;

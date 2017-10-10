@@ -14,8 +14,6 @@ import java.util.Map.Entry;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.vg.util.Struct;
-
 public class PackedStruct extends Struct {
 
     @Override

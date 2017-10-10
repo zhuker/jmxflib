@@ -16,5 +16,9 @@ public class Tag64 extends BaseTag {
     public int getValueSize() {
         return 8;
     }
+    
+    public long getValue() {
+        return value.get();
+    }
 
 }

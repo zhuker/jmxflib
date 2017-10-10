@@ -1,9 +1,9 @@
 package com.vg.mxf;
 
-import static com.vg.util.BER.encodeLength;
-import static com.vg.util.FileUtil.readFullyOrDie;
-import static com.vg.util.FileUtil.writeFully;
-import static org.junit.Assert.assertEquals;
+import static com.vg.mxf.BER.encodeLength;
+import static com.vg.mxf.FileUtil.readFullyOrDie;
+import static com.vg.mxf.FileUtil.writeFully;
+import static org.junit.Assert.*;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -37,12 +38,8 @@ import com.vg.io.RandomAccessFileBufferedInputStream;
 import com.vg.io.SeekableFileInputStream;
 import com.vg.io.SeekableInputStream;
 import com.vg.io.SeekableLimitedInputStream;
-import com.vg.util.BER;
-import com.vg.util.FileUtil;
-import com.vg.util.LongArrayList;
-import com.vg.util.XmlUtil;
 
-@Ignore
+//@Ignore
 public class MxfTest {
 
     @Test
@@ -678,6 +675,18 @@ public class MxfTest {
         channel.close();
         raf.close();
 
+    }
+    
+    @Test
+    public void testReadFrames() throws Exception {
+        File mxf = FileUtil.tildeExpand("/Users/zhukov/netflix2/scans/she35/LTD16562_SYN16562-PUNCH.mxf");
+        SeekableInputStream in = new SeekableFileInputStream(mxf);
+        MxfStructure s = MxfStructure.readStructure(in);
+        
+        long bodyOffset = s.getBodyOffset();
+        System.out.println(bodyOffset);
+        TreeMap<KLV,MxfValue> allKLVs = s.allKLVs;
+        
     }
 
     @Test
