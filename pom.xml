@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jmxflib</groupId>
 	<artifactId>jmxflib</artifactId>
-	<version>0.0.14</version>
+	<version>0.0.15-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>vg-corporate-repo</id>
@@ -14,7 +14,7 @@
 		<url>https://github.com/videogorillas/jmxflib</url>
 		<connection>scm:git:https://github.com/videogorillas/jmxflib.git</connection>
 		<developerConnection>scm:git:https://github.com/videogorillas/jmxflib.git</developerConnection>
-	  <tag>jmxflib-0.0.14</tag>
+	  <tag>jmxflib-0.0.13</tag>
   </scm>
 
 	<build>
