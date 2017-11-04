@@ -15,6 +15,7 @@ public class GenericSoundEssenceDescriptor extends FileDescriptor {
     Tag8 DialNorm;
     TagUUID SoundEssenceCoding;
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

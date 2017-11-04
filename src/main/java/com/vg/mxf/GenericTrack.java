@@ -14,6 +14,7 @@ public class GenericTrack extends InterchangeObject {
 
     private static int localTags[] = new int[] { 0x4801, 0x4802, 0x4803, 0x4804 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

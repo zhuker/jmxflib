@@ -23,6 +23,7 @@ public class WaveAudioEssenceDescriptor extends GenericSoundEssenceDescriptor {
     Tag64 PeakEnvelopeTimestamp;
     TagValue PeakEnvelopeData;
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

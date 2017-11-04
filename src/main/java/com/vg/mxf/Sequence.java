@@ -14,6 +14,7 @@ public class Sequence extends StructuralComponent {
 
     private final static int localTags[] = new int[] { 0x1001 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

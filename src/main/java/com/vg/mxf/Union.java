@@ -50,6 +50,7 @@ public abstract class Union extends Struct {
      * 
      * @return <code>true</code>
      */
+    @Override
     public final boolean isUnion() {
         return true;
     }

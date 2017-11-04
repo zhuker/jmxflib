@@ -24,6 +24,7 @@ public class Preface extends InterchangeObject {
     private final static int localTags[] = new int[] { 0x3b02, 0x3b03, 0x3b05, 0x3b06, 0x3b07, 0x3b08, 0x3b09, 0x3b0a,
             0x3b0b };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

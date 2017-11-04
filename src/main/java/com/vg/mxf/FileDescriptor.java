@@ -12,6 +12,7 @@ public class FileDescriptor extends GenericDescriptor {
 
     private final static int localTags[] = new int[] { 0x3001, 0x3002, 0x3004, 0x3005, 0x3006 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

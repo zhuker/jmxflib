@@ -14,6 +14,7 @@ public class TimelineTrack extends GenericTrack {
 
     private final static int localTags[] = new int[] { 0x4b01, 0x4b02 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

@@ -39,6 +39,7 @@ public class GenericPictureEssenceDescriptor extends FileDescriptor {
             0x3209, 0x320a, 0x320b, 0x320c, 0x320d, 0x320e, 0x320f, 0x3210, 0x3211, 0x3212, 0x3213, 0x3214, 0x3215,
             0x3216, 0x3217, 0x3218, 0x3219, 0x321a };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

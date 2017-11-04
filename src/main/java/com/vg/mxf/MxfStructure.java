@@ -281,8 +281,7 @@ public class MxfStructure {
         return null;
     }
 
-    public static void toXml(TreeMap<KLV, MxfValue> mxfStructure, File outFile) throws IOException,
-            ParserConfigurationException {
+    public static void toXml(TreeMap<KLV, MxfValue> mxfStructure, File outFile) throws ParserConfigurationException {
         Registry registry = Registry.getInstance();
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = builder.newDocument();
@@ -332,7 +331,7 @@ public class MxfStructure {
         XmlUtil.writeXml(document, outFile);
     }
 
-    public Document toXml() throws IOException, ParserConfigurationException {
+    public Document toXml() throws ParserConfigurationException {
         Registry registry = Registry.getInstance();
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = builder.newDocument();

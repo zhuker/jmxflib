@@ -46,6 +46,7 @@ public class IndexTable extends MxfValue {
     Tag64 VBEByteCount;
     List<TagValue> unhandled;
 
+    @Override
     public void parse() {
         ByteBuffer buf = getContent();
         while (buf.hasRemaining()) {

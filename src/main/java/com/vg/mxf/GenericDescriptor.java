@@ -12,6 +12,7 @@ public class GenericDescriptor extends InterchangeObject {
 
     private final static int localTags[] = new int[] { 0x2f01, 0x2f02 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

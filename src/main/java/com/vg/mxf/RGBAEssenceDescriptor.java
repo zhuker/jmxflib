@@ -21,6 +21,7 @@ public class RGBAEssenceDescriptor extends GenericPictureEssenceDescriptor {
     private final static int localTags[] = new int[] { 0x3401, 0x3403, 0x3404, 0x3405, 0x3406, 0x3407, 0x3408, 0x3409,
             0x8000, 0xffff };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

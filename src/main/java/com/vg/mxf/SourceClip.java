@@ -13,6 +13,7 @@ public class SourceClip extends StructuralComponent {
 
     private final static int localTags[] = new int[] { 0x1101, 0x1102, 0x1201 };
 
+    @Override
     boolean handleTag(int localTag, int sz, ByteBuffer buf) {
         if (!super.handleTag(localTag, sz, buf)) {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {

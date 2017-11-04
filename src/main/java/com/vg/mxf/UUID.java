@@ -18,6 +18,7 @@ public class UUID extends PackedStruct implements Comparable<UUID> {
         this.lo.set(lo);
     }
 
+    @Override
     public String toString() {
         long mostSigBits = hi.get();
         long leastSigBits = lo.get();
@@ -31,6 +32,7 @@ public class UUID extends PackedStruct implements Comparable<UUID> {
         return Long.toHexString(hi | (val & (hi - 1))).substring(1);
     }
 
+    @Override
     public int compareTo(UUID o) {
         byte[] bytes = getBytes();
         byte[] bytes2 = o.getBytes();

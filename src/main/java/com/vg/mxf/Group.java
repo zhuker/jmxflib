@@ -21,9 +21,8 @@ public enum Group {
     public static Group groupFromInt(int i) {
         if (i < Group.values().length) {
             return Group.values()[i];
-        } else {
-            return Group.Reserved;
         }
+        return Group.Reserved;
     }
 
 }
