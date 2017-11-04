@@ -46,4 +46,8 @@ public class GenericTrack extends InterchangeObject {
         }
         return Collections.unmodifiableList(list);
     }
+    
+    public long getTrackId() {
+        return TrackId.get();
+    }
 }
