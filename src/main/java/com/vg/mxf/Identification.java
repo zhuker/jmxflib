@@ -1,11 +1,10 @@
 package com.vg.mxf;
 
 import static com.vg.mxf.Key.key;
+import static com.vg.mxf.Preconditions.checkState;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-
-import org.junit.Assert;
 
 public class Identification extends InterchangeObject {
     TagUUID ThisGenerationUID;
@@ -28,7 +27,7 @@ public class Identification extends InterchangeObject {
             if (Arrays.binarySearch(localTags, localTag) >= 0) {
                 switch (localTag) {
                 case 0x3c09:
-                    Assert.assertEquals(16, sz);
+                    checkState(16 == sz);
                     ThisGenerationUID = inner(new TagUUID(0x3c09));
                     break;
                 case 0x3c01:
@@ -44,7 +43,7 @@ public class Identification extends InterchangeObject {
                     VersionString = inner(new TagUTF16String(0x3c04, sz));
                     break;
                 case 0x3c05:
-                    Assert.assertEquals(16, sz);
+                    checkState(16 == sz);
                     ProductUID = inner(new TagUUID(0x3c05));
                     break;
                 case 0x3c06:

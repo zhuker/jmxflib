@@ -1,24 +1,15 @@
 package com.vg.mxf;
 
 import static com.vg.mxf.Key.key;
+import static com.vg.mxf.Preconditions.checkNotNull;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.vg.io.SeekableFileInputStream;
-import com.vg.io.SeekableInputStream;
 import com.vg.mxf.Registry.ULDesc;
 
 public class IndexTable extends MxfValue {
@@ -140,7 +131,7 @@ public class IndexTable extends MxfValue {
         t.IndexEntryArray = t.inner(new TagIndexEntryArray(0x3f0a, streamOffsets.length));
         for (int i = 0; i < streamOffsets.length; i++) {
             IndexEntry e = t.IndexEntryArray.entries[i];
-            Assert.assertNotNull(e);
+            checkNotNull(e);
             e.Flags.set((short) 128);
             e.KeyFrameOffset.set((byte) 0);
             e.StreamOffset.set(streamOffsets[i]);
@@ -174,12 +165,5 @@ public class IndexTable extends MxfValue {
 
     public long getIndexDuration() {
         return IndexDuration != null ? IndexDuration.value.get() : 0L;
-    }
-
-    @Test
-    public void testLocalTag0() throws Exception {
-        File file = FileUtil.tildeExpand("~/Dropbox/testdata/mcs/dc70afb6-cd6c-453b-a469-5d0dd4f5cd8c.MXF");
-        SeekableInputStream in = new SeekableFileInputStream(file);
-        MxfStructure readStructure = MxfStructure.readStructure(in);
     }
 }

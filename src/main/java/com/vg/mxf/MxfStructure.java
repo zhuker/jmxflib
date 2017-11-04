@@ -1,7 +1,6 @@
 package com.vg.mxf;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static com.vg.mxf.Preconditions.checkState;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -115,10 +114,10 @@ public class MxfStructure {
                 }
             }
             if (footerOffset != 0 && footerOffset < in.length()) {
-                assertTrue(footerOffset > 0);
+                checkState(footerOffset > 0, "footerOffset <= 0 %s", footerOffset);
                 in.seek(footerOffset);
                 KLV kl = KLV.readKL(in);
-                assertTrue(FooterPartitionPack.Key.matches(kl.key));
+                checkState(FooterPartitionPack.Key.matches(kl.key), "FooterPartitionPack key expected got %s", kl.key);
                 FooterPartitionPack footerPartitionPack = MxfValue.parseValue(in, kl, FooterPartitionPack.class);
                 s.footerKLV = kl;
                 s.setFooterPartitionPack(footerPartitionPack);
@@ -133,7 +132,7 @@ public class MxfStructure {
                         BodyPartitionPack bpp = MxfValue.parseValue(in, kl, BodyPartitionPack.class);
                         // sanity check: make sure partition offsets are
                         // actually going backwards
-                        assertTrue(bpp.PreviousPartition.get() < previousPartitionOffset);
+                        checkState(bpp.PreviousPartition.get() < previousPartitionOffset, "previousPartitionOffset >= BodyPartitionPack.PreviousPartition %s >= %s", previousPartitionOffset, bpp.PreviousPartition.get());
                         s.bodyKLVs.put(kl, bpp);
                         previousPartitionOffset = bpp.PreviousPartition.get();
                         if (bpp.IndexByteCount.get() > 0 && bpp.IndexSID.get() > 0) {

@@ -1,8 +1,7 @@
 package com.vg.mxf;
 
+import static com.vg.mxf.Preconditions.checkState;
 import static java.lang.Math.min;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.EOFException;
 import java.io.File;
@@ -59,18 +58,18 @@ public class FileUtil {
 
     public static long forceSeek(SeekableInputStream raf, long offset) throws IOException {
         long length = raf.length();
-        assertTrue("trying to seek to (" + (offset) + ") outside of len (" + length + ")", offset <= length);
+        checkState(offset <= length, "trying to seek to (" + (offset) + ") outside of len (" + length + ")");
         raf.seek(offset);
-        assertEquals(offset, raf.position());
+        checkState(offset == raf.position());
         return offset;
     }
 
     public static long forceSeek(RandomAccessFile raf, long offset) throws IOException {
-        assertTrue(offset >= 0);
+        checkState(offset >= 0);
         long length = raf.length();
-        assertTrue("trying to seek to (" + (offset) + ") outside of file len (" + length + ")", offset <= length);
+        checkState(offset <= length, "trying to seek to (" + (offset) + ") outside of file len (" + length + ")");
         raf.seek(offset);
-        assertEquals(offset, raf.getFilePointer());
+        checkState(offset == raf.getFilePointer());
         return offset;
     }
 

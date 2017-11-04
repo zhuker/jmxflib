@@ -1,8 +1,8 @@
 package com.vg.mxf;
 
-import java.nio.ByteBuffer;
+import static com.vg.mxf.Preconditions.checkState;
 
-import org.junit.Assert;
+import java.nio.ByteBuffer;
 
 public class PartitionPack extends MxfValue {
     Unsigned16 MajorVersion = new Unsigned16();
@@ -20,11 +20,12 @@ public class PartitionPack extends MxfValue {
     OperationalPattern OperationalPattern = inner(new OperationalPattern());
     KeyList EssenceContainers = null;
 
+    @Override
     public void parse() {
         ByteBuffer content = getContent();
         int count = content.getInt();
         int size = content.getInt();
-        Assert.assertEquals(16, size);
+        checkState(16 == size);
         EssenceContainers = inner(new KeyList(count));
     }
 

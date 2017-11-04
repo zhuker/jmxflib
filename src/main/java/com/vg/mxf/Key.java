@@ -1,10 +1,11 @@
 package com.vg.mxf;
 
+import static com.vg.mxf.Preconditions.checkState;
+
 import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
 import java.util.Arrays;
 
-import org.junit.Assert;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -27,7 +28,7 @@ public class Key extends PackedStruct implements Comparable<Key> {
     public static Key key(String ul) {
         Key k = new Key();
         String[] split = ul.split("\\.");
-        Assert.assertEquals(16, split.length);
+        checkState(16 == split.length);
         byte b[] = new byte[16];
         for (int i = 0; i < 16; i++) {
             int parseInt = Integer.parseInt(split[i], 16);
@@ -42,9 +43,8 @@ public class Key extends PackedStruct implements Comparable<Key> {
         Category[] values = Category.values();
         if (s < values.length) {
             return values[s];
-        } else {
-            return Category.Reserved;
         }
+        return Category.Reserved;
     }
 
     public Group getGroup() {
@@ -52,6 +52,7 @@ public class Key extends PackedStruct implements Comparable<Key> {
         return Group.groupFromInt(s);
     }
 
+    @Override
     public int compareTo(Key o) {
         byte[] bytes = getBytes();
         byte[] bytes2 = o.getBytes();

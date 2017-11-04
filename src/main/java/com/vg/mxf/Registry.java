@@ -1,6 +1,7 @@
 package com.vg.mxf;
 
 import static com.vg.mxf.Key.key;
+import static com.vg.mxf.Preconditions.checkState;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -9,8 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map.Entry;
 import java.util.TreeMap;
-
-import org.junit.Assert;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -80,7 +79,7 @@ public class Registry {
             TreeMap<String, Registry.ULDesc> map = readToMap(Registry.class.getResourceAsStream("rp210v12.js"));
             TreeMap<String, Registry.ULDesc> map210 = readToMap(Registry.class.getResourceAsStream("rp224v11.js"));
             for (Entry<String, Registry.ULDesc> entry : map210.entrySet()) {
-                Assert.assertFalse(map.containsKey(entry.getKey()));
+                checkState(!map.containsKey(entry.getKey()));
                 map.put(entry.getKey(), entry.getValue());
             }
             INSTANCE = new Registry(map);
@@ -101,7 +100,7 @@ public class Registry {
         return map;
     }
 
-    private static Gson gson() {
+    static Gson gson() {
         GsonBuilder b = new GsonBuilder();
         Gson create = b.create();
         return create;

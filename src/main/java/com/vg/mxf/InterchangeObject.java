@@ -1,11 +1,11 @@
 package com.vg.mxf;
 
+import static com.vg.mxf.Preconditions.checkState;
+
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Assert;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +19,7 @@ public class InterchangeObject extends MxfValue {
     TagUUID ObjectClass = null;
     List<TagValue> unhandled;
 
+    @Override
     public void parse() {
         ByteBuffer buf = getContent();
         buf.position(size());
@@ -61,15 +62,15 @@ public class InterchangeObject extends MxfValue {
         if (Arrays.binarySearch(localTags, localTag) >= 0) {
             switch (localTag) {
             case 0x3c0a:
-                Assert.assertEquals(16, sz);
+                checkState(16 == sz);
                 InstanceUID = inner(new TagUUID(0x3c0a));
                 break;
             case 0x0102:
-                Assert.assertEquals(16, sz);
+                checkState(16 == sz);
                 GenerationUID = inner(new TagUUID(0x0102));
                 break;
             case 0x0101:
-                Assert.assertEquals(16, sz);
+                checkState(16 == sz);
                 ObjectClass = inner(new TagUUID(0x0101));
                 break;
             }
