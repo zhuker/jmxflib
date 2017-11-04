@@ -11,6 +11,8 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,6 +22,8 @@ import com.vg.io.SeekableInputStream;
 import com.vg.mxf.Registry.ULDesc;
 
 public class IndexTable extends MxfValue {
+    private final static Logger log = Logger.getLogger(IndexTable.class.getName());
+
     public static final Key Key = key("06.0E.2B.34.02.53.01.01.0D.01.02.01.01.10.01.00");
     private final static int localTags[] = handledLocalTags(IndexTable.class);//new int[] { 0x3f09, 0x3f0a, 0x3f0e, 0x3f0f, 0x3f10 };
 
@@ -79,7 +83,7 @@ public class IndexTable extends MxfValue {
                     unhandled.add(inner(new TagValue(localTag, sz)));
                 }
 
-                System.err.println(msg);
+                log.log(Level.FINE, msg);
             }
             buf.position(pos + sz);
         }

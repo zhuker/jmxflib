@@ -6,10 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.vg.mxf.Registry.ULDesc;
 
 public class InterchangeObject extends MxfValue {
+    private final static Logger log = Logger.getLogger(InterchangeObject.class.getName());
+
     TagUUID InstanceUID = null;
     TagUUID GenerationUID = null;
     TagUUID ObjectClass = null;
@@ -44,7 +48,7 @@ public class InterchangeObject extends MxfValue {
                     unhandled.add(inner(new TagValue(localTag, sz)));
                 }
 
-                System.err.println(msg);
+                log.log(Level.FINE, msg);
             }
             buf.position(pos + sz);
         }
