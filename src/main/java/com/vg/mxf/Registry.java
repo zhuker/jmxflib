@@ -75,26 +75,21 @@ public class Registry {
 
     private final static Registry INSTANCE;
     static {
-        try {
-            TreeMap<String, Registry.ULDesc> map = readToMap(Registry.class.getResourceAsStream("rp210v12.js"));
-            TreeMap<String, Registry.ULDesc> map210 = readToMap(Registry.class.getResourceAsStream("rp224v11.js"));
-            for (Entry<String, Registry.ULDesc> entry : map210.entrySet()) {
-                checkState(!map.containsKey(entry.getKey()));
-                map.put(entry.getKey(), entry.getValue());
-            }
-            INSTANCE = new Registry(map);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        TreeMap<String, ULDesc> map = readToMap(Registry.class.getResourceAsStream("rp210v12.js"));
+        TreeMap<String, ULDesc> map210 = readToMap(Registry.class.getResourceAsStream("rp224v11.js"));
+        for (Entry<String, ULDesc> entry : map210.entrySet()) {
+            checkState(!map.containsKey(entry.getKey()));
+            map.put(entry.getKey(), entry.getValue());
         }
+        INSTANCE = new Registry(map);
     }
 
-    private static TreeMap<String, Registry.ULDesc> readToMap(InputStream inputStream) throws IOException {
-        Registry.ULDesc[] fromJson = gson().fromJson(
-                new BufferedReader(new InputStreamReader(new BufferedInputStream(inputStream))),
-                Registry.ULDesc[].class);
-        TreeMap<String, Registry.ULDesc> map = new TreeMap<String, Registry.ULDesc>();
+    private static TreeMap<String, ULDesc> readToMap(InputStream inputStream) {
+        ULDesc[] fromJson = gson().fromJson(
+                new BufferedReader(new InputStreamReader(new BufferedInputStream(inputStream))), ULDesc[].class);
+        TreeMap<String, ULDesc> map = new TreeMap<String, ULDesc>();
         for (int i = 0; i < fromJson.length; i++) {
-            Registry.ULDesc ulDesc = fromJson[i];
+            ULDesc ulDesc = fromJson[i];
             map.put(ulDesc.ul, ulDesc);
         }
         return map;
@@ -110,9 +105,9 @@ public class Registry {
         return INSTANCE;
     }
 
-    private final TreeMap<String, Registry.ULDesc> map;
+    private final TreeMap<String, ULDesc> map;
 
-    Registry(TreeMap<String, Registry.ULDesc> map) {
+    Registry(TreeMap<String, ULDesc> map) {
         this.map = map;
     }
 
