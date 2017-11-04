@@ -120,7 +120,7 @@ public class PackedStruct extends Struct {
         return xml;
     }
 
-    private boolean notStatic(Field field) {
+    private static boolean notStatic(Field field) {
         return (field.getModifiers() & Modifier.STATIC) == 0;
     }
 

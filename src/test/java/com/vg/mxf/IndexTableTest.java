@@ -1,6 +1,6 @@
 package com.vg.mxf;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,12 +12,11 @@ import org.junit.Test;
 
 import com.vg.io.SeekableFileInputStream;
 import com.vg.io.SeekableInputStream;
-import com.vg.mxf.Registry.ULDesc;
 
 public class IndexTableTest {
     @Test
     public void testTags() throws Exception {
-        int[] localTags = IndexTable.handledLocalTags(IndexTable.class);
+        int[] localTags = MxfValue.handledLocalTags(IndexTable.class);
         Assert.assertEquals(13, localTags.length);
         Assert.assertEquals(0x3f10, localTags[12]);
     }
